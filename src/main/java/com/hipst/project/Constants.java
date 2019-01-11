@@ -2,6 +2,7 @@ package com.hipst.project;
 
 public class Constants {
 
+	public static final int CPU_CORES = 4;
 	static String TIME_IN_SEC ="timeInSec";
 	static String TIME_IN_MIN ="timeInMin";
 	static String LAT ="lat";

@@ -3,6 +3,8 @@ package com.hipst.project;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import es.usc.citius.hipster.algorithm.Hipster;
 import es.usc.citius.hipster.algorithm.Algorithm.SearchResult;
@@ -19,6 +21,8 @@ public class Helper {
 			
 		ArrayList<HashMap<String, Object>> paths = new ArrayList<HashMap<String, Object>>();
 		
+		
+		//this task could be parallelized later.
 		for (HashMap<String, String> drone : drones) {
 			SearchProblem p = GraphSearchProblem.startingFrom(drone.get(Constants.ADDRESS)).in(graph).takeCostsFromEdges().build();
 					
@@ -41,7 +45,6 @@ public class Helper {
 		 HashMap<String, Object> previousMap = null;
 		 for(HashMap<String,Object> path : paths)
 		 {
-			
 			 if(previousMap == null) {
 				 previousMap = path;
 			 }

@@ -9,8 +9,10 @@ public class DataLoader {
 	ArrayList<HashMap<String,String>> stores;
 	ArrayList<HashMap<String,String>> customers;
 	
+	//this could be later loaded from a json or some database.
 	public DataLoader(){
 
+		//DRONES LOCATIONS
 		this.drones = new ArrayList<HashMap<String,String>>();	
 		HashMap<String,String> drone = new HashMap<String, String>();
 		drone.put(Constants.ADDRESS, "Metrostrasse 12, 40235 Düsseldorf");
@@ -26,7 +28,7 @@ public class DataLoader {
 		drone.put(Constants.SPEED, "60");
 		drones.add(drone);
 		
-		
+		//STORES LOCATIONS
 		this.stores = new ArrayList<HashMap<String,String>>();	
 		HashMap<String,String> store = new HashMap<String, String>();
 		store.put(Constants.ADDRESS, "Schiessstraße 31, 40549 Düsseldorf");
@@ -54,6 +56,7 @@ public class DataLoader {
 		store.put(Constants.LONG, "6.831175799999983");
 		stores.add(store);
 		
+		//CUSTOMERS LOCATIONS
 		customers = new ArrayList<HashMap<String,String>>();	
 		HashMap<String,String> customer = new HashMap<String, String>();
 		customer.put(Constants.ADDRESS, "Kronprinzenstraße 88, 40217 Düsseldorf");

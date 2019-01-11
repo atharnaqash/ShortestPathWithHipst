@@ -28,6 +28,8 @@ public class Main {
 
 		ArrayList<HashMap<String, Object>> shortestPaths = helper.getPathFromSourceToDistination(graph,drones,customerDistination);
 		
+		System.out.println(shortestPaths);
+		
 		HashMap<String, Object> fastestPath =  helper.getFastestPath(shortestPaths);
 
 		showResults(fastestPath);
