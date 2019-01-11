@@ -16,10 +16,10 @@ import es.usc.citius.hipster.model.problem.SearchProblem;
 
 public class Helper {
 
-	  ArrayList<HashMap<String, Object>> getPathFromSourceToDistination(HipsterDirectedGraph<String, Double> graph,
-			ArrayList<HashMap<String, String>> drones, String customerDistination) {
+	  public List<HashMap<String, Object>> getPathFromSourceToDistination(HipsterDirectedGraph<String, Double> graph,
+			List<HashMap<String, String>> drones, String customerDistination) {
 			
-		ArrayList<HashMap<String, Object>> paths = new ArrayList<HashMap<String, Object>>();
+		List<HashMap<String, Object>> paths = new ArrayList<HashMap<String, Object>>();
 		
 		
 		//this task could be parallelized later.
@@ -40,7 +40,7 @@ public class Helper {
 	}
 
 	
-	  HashMap<String, Object> getFastestPath(ArrayList<HashMap<String, Object>> paths) {
+	 public HashMap<String, Object> getFastestPath(List<HashMap<String, Object>> paths) {
 		 
 		 HashMap<String, Object> previousMap = null;
 		 for(HashMap<String,Object> path : paths)
@@ -62,7 +62,7 @@ public class Helper {
 		 return previousMap;
 	}
 
-	  HashMap<String, Object> getShortestPathForCurrentDrone(SearchResult hipster, double distance, double droneSpeed) {
+	 public HashMap<String, Object> getShortestPathForCurrentDrone(SearchResult hipster, double distance, double droneSpeed) {
 
 		List distination = (List) hipster.getOptimalPaths().get(0);
 		String droneLoc = distination.get(0).toString();
@@ -87,8 +87,8 @@ public class Helper {
 
 	  
 
-	 void createGraphOfDronesAndStores(GraphBuilder<String, Double> graphBuilder,
-			ArrayList<HashMap<String, String>> drones, ArrayList<HashMap<String, String>> stores) {
+	 public void createGraphOfDronesAndStores(GraphBuilder<String, Double> graphBuilder,
+			List<HashMap<String, String>> drones, List<HashMap<String, String>> stores) {
 
 		for (HashMap<String, String> drone : drones) {
 
@@ -112,8 +112,8 @@ public class Helper {
 
 	}
 
-	 void createGraphOfStoresAndCustomers(GraphBuilder<String, Double> graphBuilder,
-				ArrayList<HashMap<String, String>> stores, ArrayList<HashMap<String, String>> customers) {
+	 public void createGraphOfStoresAndCustomers(GraphBuilder<String, Double> graphBuilder,
+				List<HashMap<String, String>> stores, List<HashMap<String, String>> customers) {
 
 			for (HashMap<String, String> store : stores) {
 
@@ -135,7 +135,7 @@ public class Helper {
 		}
 	 
 	 
-	 double distance(double lat1, double lat2, double lon1, double lon2, double el1, double el2) {
+	 public double distance(double lat1, double lat2, double lon1, double lon2, double el1, double el2) {
 
 		final int R = 6371; // Radius of the earth
 		double latDistance = Math.toRadians(lat2 - lat1);

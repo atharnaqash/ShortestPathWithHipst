@@ -2,12 +2,13 @@ package com.hipst.project;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class DataLoader {
 
-	ArrayList<HashMap<String,String>> drones;
-	ArrayList<HashMap<String,String>> stores;
-	ArrayList<HashMap<String,String>> customers;
+	List<HashMap<String,String>> drones;
+	List<HashMap<String,String>> stores;
+	List<HashMap<String,String>> customers;
 	
 	//this could be later loaded from a json or some database.
 	public DataLoader(){
@@ -81,15 +82,15 @@ public class DataLoader {
 		
 	}
 
-	public ArrayList<HashMap<String, String>> getDrones() {
+	public List<HashMap<String, String>> getDrones() {
 		return drones;
 	}
 
-	public ArrayList<HashMap<String, String>> getStores() {
+	public List<HashMap<String, String>> getStores() {
 		return stores;
 	}
 
-	public ArrayList<HashMap<String, String>> getCustomers() {
+	public List<HashMap<String, String>> getCustomers() {
 		return customers;
 	}
 	

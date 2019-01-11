@@ -1,53 +1,27 @@
 package com.hipst.project;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-
-import es.usc.citius.hipster.graph.GraphBuilder;
-import es.usc.citius.hipster.graph.HipsterDirectedGraph;
 
 public class Main {
 
 	public static void main(String[] args) {
 
-		String customerDistination = args[0].trim();
-		System.out.println("Current Delivery: "+ customerDistination);
-		
-		Helper helper = new Helper();
-		GraphBuilder<String, Double> graphBuilder = GraphBuilder.<String, Double>create();
+		if (args.length > 0) {
+			String customerDistination = args[0].trim();
+			if (customerDistination.length() > 0) {
+				System.out.println("Current Delivery: " + customerDistination);
+				DeliveryHandler dHandler = new DeliveryHandler();
+				HashMap<String, Object> fastestPath = dHandler.calculateShortestPath(customerDistination);
+				dHandler.showResults(fastestPath);
+			} else {
+				System.out.println(
+						"Got an empty command line argument, please provide the distination path e.g. \"Kaiserstraße 2, 40479 Düsseldorf\"");
+			}
+		} else {
+			System.out.println(
+					"No command line arguments found, please provide the distination path e.g. \"Kaiserstraße 2, 40479 Düsseldorf\"");
+		}
 
-		DataLoader data = new DataLoader();
-		ArrayList<HashMap<String, String>> drones = data.getDrones();
-		ArrayList<HashMap<String, String>> stores = data.getStores();
-		ArrayList<HashMap<String, String>> customers = data.getCustomers();
-
-		helper.createGraphOfDronesAndStores(graphBuilder, drones, stores);
-		helper.createGraphOfStoresAndCustomers(graphBuilder, stores, customers);
-
-		HipsterDirectedGraph<String, Double> graph = graphBuilder.createDirectedGraph();
-
-		ArrayList<HashMap<String, Object>> shortestPaths = helper.getPathFromSourceToDistination(graph,drones,customerDistination);
-		
-		System.out.println(shortestPaths);
-		
-		HashMap<String, Object> fastestPath =  helper.getFastestPath(shortestPaths);
-
-		showResults(fastestPath);
-		
-		
 	}
-
-	private static void showResults(HashMap<String, Object> fastestPath) {
-		
-		System.out.println("--------------------------------------------------");
-		System.out.println("Drone Loc:	"+fastestPath.get(Constants.DRONE_LOC));
-		System.out.println("Store Loc:	"+fastestPath.get(Constants.STORE_LOC));
-		System.out.println("Customer Loc:	"+fastestPath.get(Constants.CUSTOMER_LOC));
-		System.out.println("Distance:	"+fastestPath.get(Constants.DISTANCE));
-		System.out.println("Time (sec):	"+fastestPath.get(Constants.TIME_IN_SEC));
-		System.out.println("Time (Min):	"+fastestPath.get(Constants.TIME_IN_MIN));
-	}
-
-	
 
 }
